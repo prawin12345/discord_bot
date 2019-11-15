@@ -6,10 +6,16 @@
   <body>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <canvas id="t"></canvas>
+    <style>
+      canvas {
+        border: 1px solid #d3d3d3;
+        background-color: #f1f1f1;
+      }
+</style>
   </body>
   <script>
     height = document.getElementsByTagName('body')[0].offsetHeight;
     width = height/9*16;
-    document.getElementById('t').style = "width: "+widtht+"px; height: "+height+"px;";
+    document.getElementById('t').style = "width: "+width+"px; height: "+height+"px;";
   </script>
 </html>
