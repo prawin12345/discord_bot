@@ -40,5 +40,5 @@ bot.on('message', msg => {
 });
 
 app.get('/', function(req, res){
-  res.sendFile("<html>ok</html>");
+  res.sendFile(__dirname + '/index.html');
 });
