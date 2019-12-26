@@ -1,50 +1,40 @@
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser')
-const axios = require('axios')
+/**
+ * This example demonstrates setting up a webook, and receiving
+ * updates in your express app
+ */
+/* eslint-disable no-console */
 
-app.use(bodyParser.json()) // for parsing application/json
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-) // for parsing application/x-www-form-urlencoded
+const TOKEN = process.env.TELEGRAM_TOKEN || '746318905:AAHFi16QzKDFogTMHC1inWHwnl7vj5ZRHKo';
+const url = 'https://<PUBLIC-URL>';
+const port = process.env.PORT;
 
-//This is the route the API will call
-app.post('/new-message', function(req, res) {
-  const { message } = req.body
+const TelegramBot = require('../..');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-  //Each message contains "text" and a "chat" object, which has an "id" which is the chat id
+// No need to pass any parameters as we will handle the updates with Express
+const bot = new TelegramBot(TOKEN);
 
-  if (!message || message.text.toLowerCase().indexOf('marco') < 0) {
-    // In case a message is not present, or if our message does not have the word marco in it, do nothing and return an empty response
-    res.end("no message");
-  }
+// This informs the Telegram servers of the new webhook.
+bot.setWebHook(`${url}/bot${TOKEN}`);
 
-  // If we've gotten this far, it means that we have received a message containing the word "marco".
-  // Respond by hitting the telegram bot API and responding to the approprite chat_id with the word "Polo!!"
-  // Remember to use your own API toked instead of the one below  "https://api.telegram.org/bot<your_api_token>/sendMessage"
-  axios
-    .post(
-      'https://api.telegram.org/bot746318905:AAHFi16QzKDFogTMHC1inWHwnl7vj5ZRHKo/sendMessage',
-      {
-        chat_id: message.chat.id,
-        text: 'Polo!!'
-      }
-    )
-    .then(response => {
-      // We get here if the message was successfully posted
-      console.log('Message posted')
-      res.end('ok')
-    })
-    .catch(err => {
-      // ...and here if it was not
-      console.log('Error :', err)
-      res.end('Error :' + err)
-    })
-})
+const app = express();
 
-// Finally, start our server
-app.listen(3000, function() {
-  console.log('Telegram app listening on port 3000!')
-})
+// parse the updates to JSON
+app.use(bodyParser.json());
+
+// We are receiving updates at the route below!
+app.post(`/bot${TOKEN}`, (req, res) => {
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
+});
+
+// Start Express Server
+app.listen(port, () => {
+  console.log(`Express server is listening on ${port}`);
+});
+
+// Just to ping!
+bot.on('message', msg => {
+  bot.sendMessage(msg.chat.id, 'I am alive!');
+});
