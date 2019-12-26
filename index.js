@@ -38,3 +38,7 @@ app.listen(port, () => {
 bot.on('message', msg => {
   bot.sendMessage(msg.chat.id, 'I am alive!');
 });
+
+app.get('/', function(req, res){
+  res.sendFile("<html>ok</html>");
+});
