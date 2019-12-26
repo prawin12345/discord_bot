@@ -18,7 +18,7 @@ app.post('/new-message', function(req, res) {
 
   if (!message || message.text.toLowerCase().indexOf('marco') < 0) {
     // In case a message is not present, or if our message does not have the word marco in it, do nothing and return an empty response
-    return res.end()
+    res.end("no message");
   }
 
   // If we've gotten this far, it means that we have received a message containing the word "marco".
