@@ -5,10 +5,10 @@
 /* eslint-disable no-console */
 
 const TOKEN = process.env.TELEGRAM_TOKEN || '746318905:AAHFi16QzKDFogTMHC1inWHwnl7vj5ZRHKo';
-const url = 'https://<PUBLIC-URL>';
+const url = 'https://prawingq.herokuapp.com:443';
 const port = process.env.PORT;
 
-const TelegramBot = require('../..');
+const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const bodyParser = require('body-parser');
 
