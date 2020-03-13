@@ -1,16 +1,25 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "body": "^5.1.0",
-    "express": "^4.17.1",
-    "node-telegram-bot-api": "^0.40.0",
-    "parser": "^0.1.4",
-    "socket.io": "^1.7.4"
-  },
+
+  "name": "Example",
+
+  "description": "Example",
+
+  "version": "0.0.0",
+
+  "main": "bot.js",
+
   "scripts": {
-    "start": "node index.js"
+
+    "start": "node bot.js"
+
+  },
+
+  "dependencies": {
+
+    "discord.js": "11.1.0",
+
+    "request": "2.81.0"
+
   }
+
 }
