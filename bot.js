@@ -16,8 +16,10 @@ client.on('message', msg => {
 
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  client.channels.get('687937985852866603').send(req.headers['x-forwarded-for']);
+app.get('/send', function(req, res) {
+    var m = req.query('m');
+    client.channels.get('687937985852866603').send(m);
+    res.send("OK \n Message: " + m + " sent into channel.");
 });
 
 app.listen(PORT, () => {
