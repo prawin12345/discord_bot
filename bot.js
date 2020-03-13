@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'Bonjour') {
-    msg.reply('Noch 10 Minuten verbleiben bis zum Beginn. Meldet euch mit  ```PHP \n "Bonjour!" \n ``` an.');
+    msg.reply('Noch 10 Minuten verbleiben bis zum Beginn. Meldet euch mit  ```PHP'+'\n'+'"Bonjour!" \n ``` an.');
   }
 });
 
