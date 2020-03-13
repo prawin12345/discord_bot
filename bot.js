@@ -18,7 +18,7 @@ client.on('message', msg => {
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/send', function(req, res) {
     var m = decodeURI(m);
-    m = req.query('m');
+    m = req.query.m;
     client.channels.get('687937985852866603').send(m);
     res.send("OK \n Message: " + m + " sent into channel.");
 });
