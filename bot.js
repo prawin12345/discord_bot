@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var express = require('express');
+var app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -11,8 +13,6 @@ client.on('message', msg => {
   }
 });
 
-var express = require('express');
-var app = express();
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {
