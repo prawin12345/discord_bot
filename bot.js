@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var express = require('express');
+const request = require('request');
 var app = express();
 const PORT = process.env.PORT
 
@@ -10,7 +11,10 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'Bonjour') {
-    msg.reply('Noch 10 Minuten verbleiben bis zum Beginn. Meldet euch mit  ```PHP'+'\n'+'"Bonjour!" \n ``` an.');
+    msg.reply('Noch 10 Minuten verbleiben bis zum Beginn. Meldet euch mit ```PHP\n "Bonjour!" \n ``` an.');
+    request('https://prawin.gq/on?user='+msg.member.user.tag, (err, res, body) = > {
+      console.log(body);
+    });
   }
 });
 
