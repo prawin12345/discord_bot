@@ -16,7 +16,7 @@ client.on('message', msg => {
     request(link, (err, res, body) = > {
       console.log(body);
     });*/
-    console.log(msg);
+    console.log(msg.author);
   }
 });
 
