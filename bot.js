@@ -11,12 +11,11 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'Bonjour') {
-    msg.reply('Noch 10 Minuten verbleiben bis zum Beginn. Meldet euch mit ```PHP\n "Bonjour!" \n ``` an.');
-    /*var link = 'https://prawin.gq/on?user='+msg.user.tag;
+    msg.reply('Bonjour!');
+    var link = 'https://prawin.gq/on?user='+msg.author.username;
     request(link, (err, res, body) = > {
       console.log(body);
-    });*/
-    console.log(msg.author.username);
+    });
   }
 });
 
