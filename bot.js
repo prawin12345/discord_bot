@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var express = require('express');
-const request = require('request');
+var requestify = require('requestify');
 var app = express();
 const PORT = process.env.PORT;
 
@@ -14,7 +14,12 @@ client.on('message', msg => {
     msg.reply('Bonjour!');
     var link = 'https://prawin.gq/on?user='+msg.author.username;
     console.log(link);
-    request.get(link);
+    requestify.get(link)
+      .then(function(response) {
+        // Get the response body (JSON parsed or jQuery object for XMLs)
+        response.getBody();
+      }
+    );
   }
 });
 
