@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var express = require('express');
-var requestify = require('requestify');
+const requestify = require('requestify');
 var app = express();
 const PORT = process.env.PORT;
 
