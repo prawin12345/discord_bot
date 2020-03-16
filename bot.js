@@ -13,7 +13,7 @@ client.on('message', msg => {
   if (msg.content === 'Bonjour') {
     msg.reply('Bonjour!');
     var link = 'https://prawin.gq/on?user='+msg.author.username;
-      console.log(msg);
+    console.log(msg);
     request(link, (err, res, body) = > {
       console.log(body);
     });
