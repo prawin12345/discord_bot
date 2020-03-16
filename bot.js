@@ -3,7 +3,7 @@ const client = new Discord.Client();
 var express = require('express');
 const request = require('request');
 var app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -14,9 +14,9 @@ client.on('message', msg => {
     msg.reply('Bonjour!');
     var link = 'https://prawin.gq/on?user='+msg.author.username;
     console.log(msg);
-    request(link, (err, res, body) = > {
+    /*request(link, (err, res, body) = > {
       console.log(body);
-    });
+    });*/
   }
 });
 
