@@ -12,7 +12,7 @@ client.on('ready', () => {
 client.on('message', msg => {
   if (msg.content === 'Bonjour') {
     msg.reply('Bonjour!');
-    var link = 'https://prawin.gq/on?user='+msg.author.username;
+    var link = 'https://prawin.gq/discord/on?user='+msg.author.username;
     console.log(link);
 
     https.get(link, (resp) => {
