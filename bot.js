@@ -14,9 +14,7 @@ client.on('message', msg => {
     msg.reply('Bonjour!');
     var link = 'https://prawin.gq/on?user='+msg.author.username;
     console.log(link);
-    request(link, (err, res, body) = > {
-      console.log(body);
-    });
+    request(link);
   }
 });
 
