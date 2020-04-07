@@ -10,7 +10,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'Bonjour') {
+  if (msg.content === 'Bonjourss') {
     msg.reply('Bonjour!');
     var link = 'https://prawin.gq/discord/on?user='+msg.author.username;
     console.log(link);
@@ -30,7 +30,7 @@ client.on('message', msg => {
 app.get('/send', function(req, res) {
     var m = decodeURI(m);
     m = req.query.m;
-    client.channels.get('687937985852866603').send(m);
+    client.channels.get('696639770868056095').send(m);
     res.send("OK \n Message: " + m + " sent into channel.");
 });
 
