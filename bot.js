@@ -36,8 +36,8 @@ client.on('message', msg => {
     msg.reply(sp);
     console.log(msg);
   }
-  else if (msg.content === '=help') {
-    msg.reply("\n =sp   sendet den Stundenplan");
+  else if (msg.content === '=test') {
+    msg.reply("test ok \n" + msg._guild);
   }
 });
 
