@@ -25,6 +25,7 @@ var sp  = `
 | 15:10 |     | (M) |    | E  |    |
 +-------+-----+-----+----+----+----+
 `
+var sp = "```PHP" + sp + "```"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
