@@ -31,7 +31,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'Bonjourss') {
+  if (msg.content === '=sp') {
     msg.reply(sp);
   }
 });
