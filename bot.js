@@ -33,8 +33,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === '=sp') {
-    msg.reply(sp);
-    console.log(msg);
+    client.channels.get(msg.channel.id).send(sp);
   }
   else if (msg.content === '=test') {
     msg.reply("test ok \n" + msg.channel.id);
