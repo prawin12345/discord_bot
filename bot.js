@@ -36,7 +36,7 @@ client.on('message', msg => {
     client.channels.get(msg.channel.id).send(sp);
   }
   else if (msg.content === '=test') {
-    msg.reply("test ok \n" + msg.channel.id);
+    client.channels.get(msg.channel.id).send("test ok \n");
   }
 });
 
