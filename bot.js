@@ -4,6 +4,27 @@ var express = require('express');
 const https = require('https');
 var app = express();
 const PORT = process.env.PORT;
+var sp  = `
++-------+-----+-----+----+----+----+
+| 07:45 | G   | F   | G  | Mu |    |
++-------+     +-----+----+----+----+
+| 08:40 |     | E   | M° | B  | F  |
++-------+-----+-----+----+----+----+
+| 09:35 | M+  | M°  | BG | D  | E  |
++-------+-----+-----+    |    +----+
+| 10:35 | F   | Gg  |    |    | M° |
++-------+-----+-----+----+----+----+
+| 11:30 | Mu  | D   | B  | M+ |    |
++-------+-----+-----+----+----+----+
+|       |     |     |    |    |    |
++-------+-----+-----+----+----+----+
+| 13:20 | (D) | TK  |    | F  | D  |
++-------+-----+-----+----+----+----+
+| 14:15 |     |     |    | G  | Gg |
++-------+-----+-----+----+----+----+
+| 15:10 |     | (M) |    | E  |    |
++-------+-----+-----+----+----+----+
+`
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -11,17 +32,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'Bonjourss') {
-    msg.reply('Bonjour!');
-    var link = 'https://prawin.gq/discord/on?user='+msg.author.username;
-    console.log(link);
-
-    https.get(link, (resp) => {
-        let data = '';
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
-        resp.on('end', () => {console.log(JSON.parse(data).explanation);});
-    }).on("error", (err) => {console.log("Error: " + err.message);});
+    msg.reply(sp);
   }
 });
 
@@ -30,7 +41,7 @@ client.on('message', msg => {
 app.get('/send', function(req, res) {
     var m = decodeURI(m);
     m = req.query.m;
-    client.channels.get('696639770868056095').send(m);
+    client.channels.get('687937985852866603').send(m);
     res.send("OK \n Message: " + m + " sent into channel.");
 });
 
