@@ -37,7 +37,7 @@ client.on('message', msg => {
     console.log(msg);
   }
   else if (msg.content === '=test') {
-    msg.reply("test ok \n" + msg._guild);
+    msg.reply("test ok \n" + msg.channel.id);
   }
 });
 
