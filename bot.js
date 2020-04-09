@@ -34,6 +34,7 @@ client.on('ready', () => {
 client.on('message', msg => {
   if (msg.content === '=sp') {
     msg.reply(sp);
+    console.log(msg);
   }
   else if (msg.content === '=help') {
     msg.reply("\n =sp   sendet den Stundenplan");
