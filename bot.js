@@ -97,7 +97,7 @@ app.get('/send', function(req, res) {
 app.get('/bot', function(req, res) {
     var time = req.query.time;
     var index = new Date();
-    index = index.getDay();
+    index = index.getDay() - 1;
     var message = LESSONS["starts"+time][index];
     message += "\n \n Debug: time = "+time+", index = "+index+".";
     res.send(message);
