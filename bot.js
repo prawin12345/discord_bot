@@ -71,7 +71,7 @@ const LESSONS = {
 }
 const CHANNEL_ID = '687937985852866603';
 
-
+const discordSend = (m) => client.channels.get(msg.channel.id).send(m);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -82,6 +82,16 @@ client.on('message', msg => {
   }
   else if (msg.content === '=test') {
     client.channels.get(msg.channel.id).send("test ok \n");
+  }
+  switch (msg.content) {
+    case "=sp":
+      discordSend(TIMETABLE);
+      break;
+    case "=test":
+      discordSend("test ok \n");
+      break;
+    //default:
+      //discordSend("");
   }
 });
 
@@ -101,9 +111,9 @@ app.get('/bot', function(req, res) {
     var message = LESSONS["starts"+time][index];
     if (message !== "stop") {
       message += `\n\n Debug: time = ${time}, index = ${index}.`;
-      res.send(message);
+      client.channels.get(CHANNEL_ID).send(message);
     }
-    client.channels.get(CHANNEL_ID).send(message);
+    res.send(message);
 });
 
 app.get('/', function(req, res) {
