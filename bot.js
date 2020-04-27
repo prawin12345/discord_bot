@@ -99,9 +99,15 @@ app.get('/bot', function(req, res) {
     var index = new Date();
     index = index.getDay() - 1;
     var message = LESSONS["starts"+time][index];
-    message += "\n \n Debug: time = "+time+", index = "+index+".";
-    res.send(message);
+    if (message !== "stop") {
+      message += `\n\n Debug: time = ${time}, index = ${index}.`;
+      res.send(message);
+    }
     client.channels.get(CHANNEL_ID).send(message);
+});
+
+app.get('/', function(req, res) {
+    res.send("200 OK");
 });
 
 app.listen(PORT, () => {
