@@ -99,7 +99,7 @@ app.get('/bot', function(req, res) {
     var index = new Date();
     index = index.getDay();
     var message = LESSONS["starts"+time][index];
-    message += "\n \n Debug: d = ${d}, time = ${time}, index = ${index}."
+    message += "\n \n Debug: d = "+d+", time = "+time+", index = "+index+"."
     client.channels.get(CHANNEL_ID).send(message);
 });
 
