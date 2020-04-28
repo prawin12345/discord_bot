@@ -71,7 +71,6 @@ const LESSONS = {
 }
 const CHANNEL_ID = '687937985852866603';
 
-const discordSend = (m) => client.channels.get(msg.channel.id).send(m);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -82,16 +81,6 @@ client.on('message', msg => {
   }
   else if (msg.content === '=test') {
     client.channels.get(msg.channel.id).send("test ok \n");
-  }
-  switch (msg.content) {
-    case "=sp":
-      discordSend(TIMETABLE);
-      break;
-    case "=test":
-      discordSend("test ok \n");
-      break;
-    //default:
-      //discordSend("");
   }
 });
 
