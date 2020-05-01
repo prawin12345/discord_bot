@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 var express = require('express');
-const https = require('https');
 var app = express();
+var mysql = require('mysql');
+const db = require('./database');
 
 const client = new Discord.Client();
 const PORT = process.env.PORT;
@@ -82,12 +83,19 @@ client.on('message', msg => {
   else if (msg.content === '=test') {
     client.channels.get(msg.channel.id).send("test ok \n");
   }
+  else if (msg.content.startsWith('=punish')) {
+    let message = msg.content.split('');
+    let [,name,points,reason] = message;
+    client.channels.get(msg.channel.id).send(db.punish(name, points, reason));
+  }
+  else if (msg.content = '=minus yanis') {
+    "";
+  }
 });
 
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/send', function(req, res) {
-    var m = decodeURI(m);
     m = req.query.m;
     client.channels.get(CHANNEL_ID).send(m);
     res.send("OK \n Message: " + m + " sent into channel.");
