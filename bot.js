@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-const db = require('./database.js');
+const db = require('/app/database.js');
 
 const client = new Discord.Client();
 const PORT = process.env.PORT;
