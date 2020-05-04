@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-const db = require('./database.js');
+//const db = require('./database.js');
 
 const client = new Discord.Client();
 const PORT = process.env.PORT;
@@ -83,11 +83,12 @@ client.on('message', msg => {
   else if (msg.content === '=test') {
     client.channels.get(msg.channel.id).send("test ok \n");
   }
-  else if (msg.content.startsWith('=punish')) {
-    let message = msg.content.split('');
+  /*else if (msg.content.startsWith('=punish')) {
+    let message = msg.content.split(' ');
+    console.log(message);
     let [,name,points,reason] = message;
     client.channels.get(msg.channel.id).send(db.punish(name, points, reason));
-  }
+  }*/
   else if (msg.content = '=minus yanis') {
     "";
   }
