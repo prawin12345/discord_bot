@@ -108,7 +108,6 @@ app.get('/bot', function(req, res) {
     index = index.getDay() - 1;
     var message = LESSONS["starts"+time][index];
     if (message !== "stop") {
-      message += `\n\n Debug: time = ${time}, index = ${index}.`;
       client.channels.get(CHANNEL_ID).send(message);
     }
     res.send(message);
