@@ -89,7 +89,7 @@ client.on('message', msg => {
     let [,name,points,reason] = message;
     client.channels.get(msg.channel.id).send(db.punish(name, points, reason));
   }*/
-  else if (msg.content = '!play sad') {
+  else if (msg.content == '!play sad') {
     client.channels.get(msg.channel.id).send("!skip");
   }
 });
