@@ -91,11 +91,11 @@ client.on('message', msg => {
   //alle muten
   else if (msg.content === '=mute') {
       if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
-        let channel = msg.member.voice.channel;
         if (msg.member.voice == null) {
           msg.reply('Du musst dafür in einem voiceChannel sein.');
         }
         else {
+          let channel = msg.member.voice.channel;
           for (let member of channel.members) {
               member[1].setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
           }
