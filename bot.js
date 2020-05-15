@@ -99,7 +99,7 @@ client.on('message', msg => {
           for (let member of channel.members) {
               member[1].setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
           }
-          client.channels.get(msg.channel.id).send(`Alle im Channel #${channel.toString()} wurden gemutet.`);
+          client.channels.get(msg.channel.id).send(`Alle im Channel ${channel.name()} wurden gemutet.`);
         }
       }
       else {
@@ -121,12 +121,17 @@ client.on('message', msg => {
         for (let member of channel.members) {
             member[1].setMute(false);
         }
-        client.channels.get(msg.channel.id).send(`Alle im Channel ${channel.toString()} wurden entmutet.`);
+        client.channels.get(msg.channel.id).send(`Alle im Channel ${channel.name()} wurden entmutet.`);
       }
     }
     else {
-      msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?');
-      msg.react('😡');
+      if (msg.member.voice.serverMute) {
+        msg.member.voice.setMute(false);
+        msg.reply('Du wurdest entmutet.');
+      }
+      else {
+        msg.reply('Du bist schon entmutet.');
+      }
     }
   }
   /*else if (msg.content.startsWith('=punish')) {
