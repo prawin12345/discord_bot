@@ -68,7 +68,7 @@ const LESSONS = {
                 "stop",
                 "stop",
                 "The English lesson hat started, like the message.",
-                "stop"]
+                "!clear-all-infractions"]
 }
 const CHANNEL_ID = '687937985852866603';
 
@@ -77,11 +77,43 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+
+  //Stundenplan
   if (msg.content === '=sp') {
     client.channels.get(msg.channel.id).send(TIMETABLE);
   }
+
+  //Ping-Test
   else if (msg.content === '=test') {
     client.channels.get(msg.channel.id).send("test ok \n");
+  }
+
+  //alle muten
+  else if (msg.content === '=mute') {
+      if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
+        let channel = msg.member.voiceChannel;
+        for (let member of channel.members) {
+            member[1].setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
+        }
+      }
+      else {
+        msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?');
+        msg.react('😡');
+      }
+  }
+
+  //alle entmuten
+  else if (msg.content === '=unmute') {
+    if (msg.author.username == "Prawin1234"){
+      let channel = msg.member.voiceChannel;
+      for (let member of channel.members) {
+          member[1].setMute(false);
+      }
+    }
+    else {
+      msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?');
+      msg.react('😡');
+    }
   }
   /*else if (msg.content.startsWith('=punish')) {
     let message = msg.content.split(' ');
