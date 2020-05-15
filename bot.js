@@ -93,6 +93,7 @@ client.on('message', msg => {
       if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
         if (msg.member.voice == null) {
           msg.reply('Du musst dafür in einem voiceChannel sein.');
+          console.log(msg.member);
         }
         else {
           let channel = msg.member.voice.channel;
