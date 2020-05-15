@@ -99,7 +99,7 @@ client.on('message', msg => {
           for (let member of channel.members) {
               member[1].setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
           }
-          client.channels.get(msg.channel.id).send(`Alle im Channel #${channel.name} wurden gemutet.`);
+          client.channels.get(msg.channel.id).send(`Alle im Channel #${channel.toString()} wurden gemutet.`);
         }
       }
       else {
@@ -121,7 +121,7 @@ client.on('message', msg => {
         for (let member of channel.members) {
             member[1].setMute(false);
         }
-        client.channels.get(msg.channel.id).send(`Alle im Channel #${channel.name} wurden entmutet.`);
+        client.channels.get(msg.channel.id).send(`Alle im Channel ${channel.toString()} wurden entmutet.`);
       }
     }
     else {
