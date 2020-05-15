@@ -111,10 +111,17 @@ client.on('message', msg => {
 
   //alle entmuten
   else if (msg.content === '=unmute') {
-    if (msg.author.username == "Prawin1234"){
-      let channel = msg.member.voiceChannel;
-      for (let member of channel.members) {
-          member[1].setMute(false);
+    if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
+      if (msg.member.voiceChannelID == null) {
+        msg.reply('Du musst dafür in einem voiceChannel sein.');
+        //console.log(msg.member);
+        console.log(msg.member.voiceChannelID);
+      }
+      else {
+        let channel = client.channels.get(msg.member.voiceChannelID);
+        for (let member of channel.members) {
+            member[1].setMute(false);
+        }
       }
     }
     else {
