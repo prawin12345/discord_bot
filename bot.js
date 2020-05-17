@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 var express = require('express');
 var app = express();
-var hw = require(__dirname+"hw.js");
+var hw = require(__dirname+"/hw.js");
 var fs = require('fs');
 //const db = require('./database.js');
 
