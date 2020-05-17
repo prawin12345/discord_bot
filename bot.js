@@ -148,6 +148,14 @@ client.on('message', msg => {
       msg.reply(e);
     }
   }
+  else if (msg.content === '=dev'){
+    let code = msg.content.split(' ');
+    try {
+      eval(code[1])
+    } catch (error) {
+      msg.reply(error);
+    }
+  }
   /*else if (msg.content.startsWith('=punish')) {
     let message = msg.content.split(' ');
     console.log(message);
