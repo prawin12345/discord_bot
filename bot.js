@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 var express = require('express');
 var app = express();
-var mysql = require('mysql');
 //const db = require('./database.js');
 
 const client = new Discord.Client();
