@@ -26,7 +26,7 @@ client.on('message', msg => {
 
   //alle muten
   else if (msg.content === '=mute') {
-      if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
+      if (msg.member.hasPermission('MUTE_MEMBERS')){
         if (msg.member.voiceChannelID == null) {
           msg.reply('Du musst dafür in einem voiceChannel sein.');
         }
