@@ -62,3 +62,5 @@ const LESSONS = {
                 "!clear-all-infractions"]
 }
 const CHANNEL_ID = '687937985852866603';
+
+exports.confirmation = "module erfolgreich geladen";

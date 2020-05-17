@@ -136,6 +136,16 @@ client.on('message', msg => {
       }
     }
   }
+
+  //dev Section
+  else if (msg.content === '=dev_testfor module') {
+    try {
+      let confirmation = require(__dirname+'/constants.js');
+      msg.reply(confirmation);
+    } catch (e) {
+      msg.reply(e);
+    }
+  }
   /*else if (msg.content.startsWith('=punish')) {
     let message = msg.content.split(' ');
     console.log(message);
