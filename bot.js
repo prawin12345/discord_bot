@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 var express = require('express');
 var app = express();
+var hw = require(__dirname+"hw.js");
+var fs = require('fs');
 //const db = require('./database.js');
 
 const TIMETABLE  = "```PHP" + `
@@ -140,7 +142,7 @@ client.on('message', msg => {
   //dev Section
   else if (msg.content === '=dev_testfor module') {
     try {
-      let confirmation = require(__dirname+'/constants.js');
+      let {confirmation} = require(__dirname+'/constants.js');
       msg.reply(confirmation);
     } catch (e) {
       msg.reply(e);
