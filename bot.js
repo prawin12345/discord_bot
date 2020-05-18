@@ -107,7 +107,7 @@ client.on('message', msg => {
     fs.readFile(`${__dirname}/hw.json`, (err,file) => {
       if (err) msg.reply(err);
       else msg.reply(file);
-      console.log(file);
+      console.log(JSON.parse(file));
     });
   }
 
