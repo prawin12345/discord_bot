@@ -103,6 +103,10 @@ client.on('message', msg => {
     }
   }
 
+  else if (msg.content === '=dev hw.json') {
+    msg.reply(fs.readFile(`${__dirname}/hw.json`));
+  }
+
   /*else if (msg.content === '=dev'){
     let code = msg.content.split(' ');
     try {
