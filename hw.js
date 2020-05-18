@@ -1,5 +1,6 @@
-fs = require('fs');
+
 function modifyHomework(msg, subject, input, type) {
+    fs = require('fs');
     fs.readFile(__dirname+'/hw.json', (err, file) => {
         if (err) return msg.reply(err);
         var hw = JSON.parse(file)
