@@ -13,7 +13,6 @@ const CHANNEL_ID = constants.CHANNEL_ID;
 //Bot einloggen
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.channels.get('696639770868056095').send(`Bot gestartet.`);
 });
 
 //Aktionen beim Versender einer Nachricht
