@@ -12,6 +12,7 @@ function modifyHomework(subject, input, type) {
         fs.writeFile(__dirname+'/hw.json', JSON.parse(hw, null, '\t'), (err) => {
             if (err) return err;
         });
+        return JSON.parse(hw, null, '\t');
     })
 }
 exports.modifyHomework = modifyHomework;
