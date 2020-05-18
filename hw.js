@@ -4,6 +4,8 @@ function modifyHomework(msg, subject, input, type) {
     fs.readFile(__dirname+'/hw.json', (err, file) => {
         if (err) return msg.reply(err);
         var hw = JSON.parse(file)
+        console.log(hw);
+        console.log(arguments);
         subject = hw[subject];
         if (subject == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
         else if (input == null) return msg.reply("Unvollständige Eingabe");
