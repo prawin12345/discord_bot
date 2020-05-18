@@ -1,6 +1,6 @@
 
 function modifyHomework(subject, input, type) {
-    fs.readFile(__dirname+'/hw.json', (err, file) => {
+    return fs.readFile(__dirname+'/hw.json', (err, file) => {
         if (err) return err;
         var hw = JSON.parse(file)
         subject = hw[subject];
