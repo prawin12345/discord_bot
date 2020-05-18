@@ -1,4 +1,4 @@
-
+fs = require('fs');
 function modifyHomework(msg, subject, input, type) {
     fs.readFile(__dirname+'/hw.json', (err, file) => {
         if (err) return msg.reply(err);
