@@ -85,7 +85,7 @@ client.on('message', msg => {
       var command = msg.content.split(' ');
       var [,subject,input,type] = command;
       try {
-        var out = hw.modifyHomework(subject,input,type);
+        var out = hw.modifyHomework(msg, subject,input,type);
         client.channels.get(msg.channel.id).send(out);
       } catch (error) {
         client.channels.get(msg.channel.id).send(error);
