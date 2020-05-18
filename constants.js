@@ -1,4 +1,4 @@
-const TIMETABLE  = "```PHP" + `
+export const TIMETABLE  = "```PHP" + `
 +-------+-----+-----+----+----+----+
 | 07:45 | G   | F   | G  | Mu |    |
 +-------+     +-----+----+----+----+
@@ -19,7 +19,7 @@ const TIMETABLE  = "```PHP" + `
 | 15:10 |     | (M) |    | E  |    |
 +-------+-----+-----+----+----+----+
 ` + "```";
-const LESSONS = {
+export const LESSONS = {
   starts0745: [ "Die Klassenstunde beginnt.",
                 "La leçon de français a commencé, donnez un pouce.",
                 "Geschichte hat begonnen.",
@@ -61,6 +61,6 @@ const LESSONS = {
                 "The English lesson hat started, like the message.",
                 "!clear-all-infractions"]
 }
-const CHANNEL_ID = '687937985852866603';
+export const CHANNEL_ID = '687937985852866603';
 
-exports.confirmation = "module erfolgreich geladen";
+export const confirmation = "module erfolgreich geladen";

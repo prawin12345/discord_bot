@@ -1,5 +1,5 @@
 
-function modifyHomework(subject, input, type) {
+export function modifyHomework(subject, input, type) {
     fs.readFile(__dirname+'/hw.json', (err, file) => {
         if (err) return err;
         var hw = JSON.parse(file)
