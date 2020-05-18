@@ -85,7 +85,21 @@ client.on('message', msg => {
       var command = msg.content.split(' ');
       var [,subject,input,type] = command;
       try {
-        var out = hw.modifyHomework(subject,input,type);
+        //var out = hw.modifyHomework(subject,input,type);
+        fs.readFile(__dirname+'/hw.json', (err, file) => {
+          if (err) return err;
+          var hw = JSON.parse(file)
+          subject = hw[subject];
+          if (subject == null) return "Hausaufgabe mit diesem Fach nicht gefunden.";
+          else if (input == null) return "Unvollständige Eingabe";
+          type = type || "do";
+          if (type !== "do" && type !== "for") return "Ungültige Eingabe für Datentyp";
+          hw[subject][type] = input;
+          fs.writeFile(__dirname+'/hw.json', JSON.parse(hw, null, '\t'), (err) => {
+              if (err) return err;
+          });
+          return JSON.parse(hw, null, '\t');
+        })
         client.channels.get(msg.channel.id).send(out);
       } catch (error) {
         client.channels.get(msg.channel.id).send(error);
