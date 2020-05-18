@@ -84,12 +84,12 @@ client.on('message', msg => {
     else {
       var command = msg.content.split(' ');
       var [,subject,input,type] = command;
-      try {
+      //try {
         var out = hw.modifyHomework(msg, subject,input,type);
         client.channels.get(msg.channel.id).send(out);
-      } catch (error) {
+      /*} catch (error) {
         client.channels.get(msg.channel.id).send(error);
-      }
+      }*/
     }
   }
 
