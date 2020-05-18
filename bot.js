@@ -104,7 +104,10 @@ client.on('message', msg => {
   }
 
   else if (msg.content === '=dev hw.json') {
-    msg.reply(fs.readFile(`${__dirname}/hw.json`));
+    fs.readFile(`${__dirname}/hw.json`, (err,file) => {
+      if (err) msg.reply(err);
+      else msg.reply(file);
+    });
   }
 
   /*else if (msg.content === '=dev'){
