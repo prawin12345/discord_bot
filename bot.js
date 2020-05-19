@@ -4,7 +4,6 @@ var app = express();
 var constants = require(`${__dirname}/constants.js`);
 var hw = require(`${__dirname}/hw.js`);
 var fs = require('fs');
-var ffmpeg = require('ffmpeg');
 //const db = require('./database.js');
 
 const client = new Discord.Client();
