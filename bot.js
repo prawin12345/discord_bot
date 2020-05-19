@@ -128,7 +128,7 @@ client.on('message', msg => {
 });
 
 client.on('messageReactionAdd', (reaction) => {
-  client.channels.get(CHANNEL_ID).send(reaction.toString());
+  client.channels.get(CHANNEL_ID).send(reaction.emoji.name;
 })
 
 
