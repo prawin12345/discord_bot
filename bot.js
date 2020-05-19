@@ -127,6 +127,10 @@ client.on('message', msg => {
   }*/
 });
 
+client.on('messageReactionAdd', (reaction) => {
+  client.channels.get(CHANNEL_ID).send(reaction.toString());
+})
+
 
 // künstlicher Webhook
 app.get('/send', function(req, res) {
