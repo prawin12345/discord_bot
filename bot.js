@@ -110,21 +110,6 @@ client.on('message', msg => {
       console.log(JSON.parse(file));
     });
   }
-
-  /*else if (msg.content === '=dev'){
-    let code = msg.content.split(' ');
-    try {
-      eval(code[1])
-    } catch (error) {
-      msg.reply(error);
-    }
-  }*/
-  /*else if (msg.content.startsWith('=punish')) {
-    let message = msg.content.split(' ');
-    console.log(message);
-    let [,name,points,reason] = message;
-    client.channels.get(msg.channel.id).send(db.punish(name, points, reason));
-  }*/
 });
 
 
