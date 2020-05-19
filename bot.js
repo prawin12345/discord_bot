@@ -128,7 +128,7 @@ client.on('message', msg => {
 });
 
 client.on('messageReactionAdd', (reaction) => {
-  client.channels.get(CHANNEL_ID).send(reaction.emoji.name);
+  if (reaction.emoji.name.startsWith("person_kneeling")) reaction.remove();
 })
 
 
