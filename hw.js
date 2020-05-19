@@ -9,10 +9,10 @@ function modifyHomework(msg, subject, input, type) {
         type = type || "doTime";
         if (type !== "doTime" && type !== "forTime") return msg.reply("Ungültige Eingabe für Datentyp");
         hw[subject][type] = input;
-        fs.writeFile(__dirname+'/hw.json', JSON.parse(hw, null, '\t'), (err) => {
+        fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return msg.reply(err);
         });
-        return msg.reply(JSON.parse(hw, null, '\t'));
+        return msg.reply(JSON.stringify(hw, null, '\t'));
     })
 }
 
@@ -24,10 +24,10 @@ function addHomework(msg, subject, forTime, doTime) {
         if (subject == null || forTime == null || doTime == null) return msg.reply("Unvollständige Eingabe");
         if (hw[subject] !== null) return msg.reply("Fach existiert schon");
         hw[subject] = {forTime: forTime, doTime: doTime}
-        fs.writeFile(__dirname+'/hw.json', JSON.parse(hw, null, '\t'), (err) => {
+        fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return msg.reply(err);
         })
-        return msg.reply(JSON.parse(hw, null, '\t'));
+        return msg.reply(JSON.stringify(hw, null, '\t'));
     })
 }
 
