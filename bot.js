@@ -128,7 +128,7 @@ client.on('message', msg => {
 });
 
 client.on('messageReactionAdd', (reaction) => {
-  if (reaction.emoji.name.startsWith("person_kneeling")) reaction.remove();
+  if (reaction.emoji.name.startsWith(":person_kneeling")) reaction.remove();
 })
 
 
