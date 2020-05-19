@@ -106,7 +106,7 @@ client.on('message', msg => {
   else if (msg.content === '=dev hw.json') {
     fs.readFile(`${__dirname}/hw.json`, (err,file) => {
       if (err) msg.reply(err);
-      else msg.reply(file);
+      else msg.reply(JSON.parse(file));
       console.log(JSON.parse(file));
     });
   }
@@ -126,11 +126,6 @@ client.on('message', msg => {
     client.channels.get(msg.channel.id).send(db.punish(name, points, reason));
   }*/
 });
-
-client.on('messageReactionAdd', (reaction) => {
-  if (reaction.emoji.name.startsWith(":person_kneeling")) reaction.remove();
-  console.log(reaction);
-})
 
 
 // künstlicher Webhook
