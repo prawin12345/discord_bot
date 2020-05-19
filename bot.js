@@ -20,12 +20,12 @@ client.on('message', msg => {
 
   //Stundenplan
   if (msg.content === '=sp') {
-    client.channels.get(msg.channel.id).send(constants.TIMETABLE);
+    client.channels.cache.get(msg.channel.id).send(constants.TIMETABLE);
   }
 
   //Ping-Test
   else if (msg.content === '=test') {
-    client.channels.get(msg.channel.id).send("test ok \n");
+    client.channels.cache.get(msg.channel.id).send("test ok \n");
   }
 
   //alle muten
@@ -35,11 +35,11 @@ client.on('message', msg => {
           msg.reply('Du musst dafür in einem voiceChannel sein.');
         }
         else {
-          let channel = client.channels.get(msg.member.voiceChannelID);
+          let channel = client.channels.cache.get(msg.member.voiceChannelID);
           for (let member of channel.members) {
               member[1].setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
           }
-          client.channels.get(msg.channel.id).send(`:mute: Alle im Channel ${channel.name} wurden gemutet.`);
+          client.channels.cache.get(msg.channel.id).send(`:mute: Alle im Channel ${channel.name} wurden gemutet.`);
         }
       }
       else {
@@ -51,17 +51,17 @@ client.on('message', msg => {
   //alle entmuten
   else if (msg.content === '=unmute') {
     if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
-      if (msg.member.voiceChannelID == null) {
+      if (msg.member.voice.channel == null) {
         msg.reply('Du musst dafür in einem voiceChannel sein.');
         //console.log(msg.member);
-        console.log(msg.member.voiceChannelID);
+        console.log(msg.member.voice.channelID);
       }
       else {
-        let channel = client.channels.get(msg.member.voiceChannelID);
+        let channel = msg.member.voice.channel;
         for (let member of channel.members) {
             member[1].setMute(false);
         }
-        client.channels.get(msg.channel.id).send(`:loud_sound: Alle im Channel ${channel.name} wurden entmutet.`);
+        client.channels.cache.get(msg.channel.id).send(`:loud_sound: Alle im Channel ${channel.name} wurden entmutet.`);
       }
     }
     else {
@@ -86,16 +86,16 @@ client.on('message', msg => {
       var [,subject,input,type] = command;
       //try {
         var out = hw.modifyHomework(msg, subject,input,type);
-        client.channels.get(msg.channel.id).send(out);
+        client.channels.cache.get(msg.channel.id).send(out);
       /*} catch (error) {
-        client.channels.get(msg.channel.id).send(error);
+        client.channels.cache.get(msg.channel.id).send(error);
       }*/
     }
   }
 
   //play sound
   else if (msg.content === '=was') {
-    var channel = client.channels.get(msg.member.voiceChannelID);
+    var channel = client.channels.cache.get(msg.member.voiceChannelID);
     channel.join().then(connection => {
       connection.play(__dirname+'/was.mp3');
     })
@@ -124,7 +124,7 @@ client.on('message', msg => {
 // künstlicher Webhook
 app.get('/send', function(req, res) {
     m = req.query.m;
-    client.channels.get(CHANNEL_ID).send(m);
+    client.channels.cache.get(CHANNEL_ID).send(m);
     res.send("OK \n Message: " + m + " sent into channel.");
 });
 
@@ -135,7 +135,7 @@ app.get('/bot', function(req, res) {
     index = index.getDay() - 1;
     var message = constants.LESSONS["starts"+time][index];
     if (message !== "stop") {
-      client.channels.get(CHANNEL_ID).send(message, {tts: true});
+      client.channels.cache.get(CHANNEL_ID).send(message, {tts: true});
     }
     res.send(message);
 });
