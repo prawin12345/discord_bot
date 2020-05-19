@@ -142,7 +142,7 @@ app.get('/bot', function(req, res) {
     index = index.getDay() - 1;
     var message = constants.LESSONS["starts"+time][index];
     if (message !== "stop") {
-      client.channels.get(CHANNEL_ID).send(message);
+      client.channels.get(CHANNEL_ID).send(message, {tts: true});
     }
     res.send(message);
 });
