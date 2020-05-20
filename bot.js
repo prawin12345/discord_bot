@@ -95,7 +95,7 @@ client.on('message', msg => {
 
   //play sound
   else if (msg.content === '=was') {
-    var channel = client.channels.cache.get(msg.member.voice.ChannelID);
+    var channel = msg.member.voice.channel;
     channel.join().then(connection => {
       let dispatcher = connection.play(__dirname+'/was.mp3');
       console.log(dispatcher);
