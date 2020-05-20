@@ -100,7 +100,7 @@ client.on('message', msg => {
     })
   }
 
-  else if (msg.content === '=w') {
+  else if (msg.content === '=b') {
     var channel = msg.member.voice.channel;
     channel.join().then(connection => {
       let dispatcher = connection.play(__dirname+'/bruh.mp3');
