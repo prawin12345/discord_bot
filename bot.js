@@ -93,19 +93,25 @@ client.on('message', msg => {
 
   //play sound
   else if (msg.content === '=w') {
-    var channel = msg.member.voice.channel;
-    channel.join().then(connection => {
-      let dispatcher = connection.play(__dirname+'/was.mp3');
-      console.log(dispatcher);
-    })
+    if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
+    else {
+      var channel = msg.member.voice.channel;
+      channel.join().then(connection => {
+        let dispatcher = connection.play(__dirname+'/was.mp3');
+        console.log(dispatcher);
+      })
+    }
   }
 
   else if (msg.content === '=b') {
-    var channel = msg.member.voice.channel;
-    channel.join().then(connection => {
-      let dispatcher = connection.play(__dirname+'/bruh.mp3');
-      console.log(dispatcher);
-    })
+    if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
+    else {
+      var channel = msg.member.voice.channel;
+      channel.join().then(connection => {
+        let dispatcher = connection.play(__dirname+'/bruh.mp3');
+        console.log(dispatcher);
+      })
+    }
   }
 
   //dev Section
