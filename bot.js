@@ -31,7 +31,7 @@ client.on('message', msg => {
   //alle muten
   else if (msg.content === '=mute') {
       if (msg.member.hasPermission('MUTE_MEMBERS')){
-        if (msg.member.voice.cannel == null) {
+        if (msg.member.voice.channel == null) {
           msg.reply('Du musst dafür in einem voiceChannel sein.');
         }
         else {
@@ -53,8 +53,6 @@ client.on('message', msg => {
     if (msg.author.username == "Prawin1234" || msg.author.username == "Rtz"){
       if (msg.member.voice.channel == null) {
         msg.reply('Du musst dafür in einem voiceChannel sein.');
-        //console.log(msg.member);
-        console.log(msg.member.voice.channelID);
       }
       else {
         let channel = msg.member.voice.channel;
