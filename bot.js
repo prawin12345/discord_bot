@@ -92,10 +92,18 @@ client.on('message', msg => {
   }
 
   //play sound
-  else if (msg.content === '=was') {
+  else if (msg.content === '=w') {
     var channel = msg.member.voice.channel;
     channel.join().then(connection => {
       let dispatcher = connection.play(__dirname+'/was.mp3');
+      console.log(dispatcher);
+    })
+  }
+
+  else if (msg.content === '=w') {
+    var channel = msg.member.voice.channel;
+    channel.join().then(connection => {
+      let dispatcher = connection.play(__dirname+'/bruh.mp3');
       console.log(dispatcher);
     })
   }
