@@ -37,7 +37,7 @@ client.on('message', msg => {
         else {
           let channel = msg.member.voice.channel;
           for (let member of channel.members) {
-              member[1].setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
+              member[1].voice.setMute(true, "Aufgrund einer Konferen o. Ä. wurden alle gemutet.");
           }
           client.channels.cache.get(msg.channel.id).send(`:mute: Alle im Channel ${channel.name} wurden gemutet.`);
         }
@@ -57,7 +57,7 @@ client.on('message', msg => {
       else {
         let channel = msg.member.voice.channel;
         for (let member of channel.members) {
-            member[1].setMute(false);
+            member[1].voice.setMute(false);
         }
         client.channels.cache.get(msg.channel.id).send(`:loud_sound: Alle im Channel ${channel.name} wurden entmutet.`);
       }
