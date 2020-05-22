@@ -33,7 +33,7 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     fs = require('fs');
-    fs.readFile(`${__dirname}hw.json`, (err, file) => {
+    fs.readFile(`${__dirname}/hw.json`, (err, file) => {
         if (err) return msg.reply(err);
         var hw = JSON.parse(file);
         for (let subject in hw) {
