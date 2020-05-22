@@ -1,7 +1,7 @@
 
 function modifyHomework(msg, subject, input, type) {
     fs = require('fs');
-    fs.readFile(__dirname+'/hw.json', (err, file) => {
+    fs.readFileSync(__dirname+'/hw.json', (err, file) => {
         if (err) return msg.reply(err);
         var hw = JSON.parse(file);
         if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
@@ -19,7 +19,7 @@ function modifyHomework(msg, subject, input, type) {
 
 function addHomework(msg, subject, forTime, doTime) {
     fs = require('fs');
-    fs.readFile(__dirname+'/hw.json', (err, file) => {
+    fs.readFileSync(__dirname+'/hw.json', (err, file) => {
         if (err) return msg.reply(err);
         var hw = JSON.parse(file);
         if (subject == null || forTime == null || doTime == null) return msg.reply("Unvollständige Eingabe");
@@ -35,7 +35,7 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     fs = require('fs');
-    fs.readFile(`${__dirname}/hw.json`, (err, file) => {
+    fs.readFileSync(`${__dirname}/hw.json`, (err, file) => {
         if (err) return msg.reply(err);
         var hw = JSON.parse(file);
         for (let subject in hw) {
