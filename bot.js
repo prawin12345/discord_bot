@@ -92,7 +92,7 @@ client.on('message', msg => {
   }
 
   else if (msg.content === 'hw_list') {
-    hw.showHomework();
+    hw.showHomework(msg);
   }
 
   //play sound
