@@ -12,7 +12,8 @@ function modifyHomework(msg, subject, input, type) {
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return msg.reply(err);
         });
-        return msg.reply("test");
+        msg.reply("test");
+        return;
     })
 }
 
@@ -27,7 +28,8 @@ function addHomework(msg, subject, forTime, doTime) {
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return msg.reply(err);
         })
-        return msg.reply("test");
+        msg.reply("test");
+        return;
     })
 }
 
@@ -39,7 +41,8 @@ function showHomework(msg) {
         for (let subject in hw) {
             msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
         }
-        return msg.reply("test");
+        msg.reply("test");
+        return;
     })
 }
 
