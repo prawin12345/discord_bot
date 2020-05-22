@@ -91,7 +91,7 @@ client.on('message', msg => {
     }
   }
 
-  else if (msg.content === 'hw_list') {
+  else if (msg.content === '=hw_list') {
     hw.showHomework(msg);
   }
 
@@ -130,9 +130,9 @@ client.on('message', msg => {
 
   else if (msg.content === '=dev hw.json') {
     fs.readFile(`${__dirname}/hw.json`, (err,file) => {
-      /*if (err) msg.reply(err);
-      else */msg.reply(JSON.parse(file));
-      console.log(JSON.parse(file));
+      if (err) msg.reply(err);
+      else msg.reply(JSON.stringify(JSON.parse(file)));
+      console.log(JSON.stringify(JSON.parse(file)));
     });
   }
 });
