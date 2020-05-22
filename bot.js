@@ -126,8 +126,8 @@ client.on('message', msg => {
 
   else if (msg.content === '=dev hw.json') {
     fs.readFile(`${__dirname}/hw.json`, (err,file) => {
-      if (err) msg.reply(err);
-      else msg.reply(JSON.parse(file));
+      /*if (err) msg.reply(err);
+      else */msg.reply(JSON.parse(file));
       console.log(JSON.parse(file));
     });
   }
@@ -152,6 +152,10 @@ app.get('/bot', function(req, res) {
     }
     res.send(message);
 });
+
+app,get('/mute', function(req, res) {
+
+})
 
 app.get('/', function(req, res) {
     res.send("200 OK");

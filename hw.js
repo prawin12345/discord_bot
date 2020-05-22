@@ -12,7 +12,7 @@ function modifyHomework(msg, subject, input, type) {
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return msg.reply(err);
         });
-        return msg.reply(JSON.stringify(hw, null, '\t'));
+        return "test";
     })
 }
 
@@ -27,7 +27,19 @@ function addHomework(msg, subject, forTime, doTime) {
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return msg.reply(err);
         })
-        return msg.reply(JSON.stringify(hw, null, '\t'));
+        return "test";
+    })
+}
+
+function showHomework(msg) {
+    fs = require('fs');
+    fs.readFile(`${__dirname}hw.json`, (err, file) => {
+        if (err) return msg.reply(err);
+        var hw = JSON.parse(file);
+        for (let subject in hw) {
+            msg.reply(`${hw[subject]} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
+        }
+        return "test";
     })
 }
 
