@@ -45,3 +45,4 @@ function showHomework(msg) {
 
 exports.modifyHomework = modifyHomework;
 exports.addHomework = addHomework;
+exports.showHomework = showHomework;

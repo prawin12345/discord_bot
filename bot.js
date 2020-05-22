@@ -91,6 +91,10 @@ client.on('message', msg => {
     }
   }
 
+  else if (msg.content === 'hw_list') {
+    
+  }
+
   //play sound
   else if (msg.content === '=w') {
     if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
@@ -153,7 +157,7 @@ app.get('/bot', function(req, res) {
     res.send(message);
 });
 
-app,get('/mute', function(req, res) {
+app.get('/mute', function(req, res) {
 
 })
 
