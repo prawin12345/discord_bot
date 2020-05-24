@@ -143,6 +143,18 @@ client.on('message', msg => {
       console.log(JSON.stringify(JSON.parse(file)));
     });
   }
+
+  else if (msg.content === '=dev reset hw') {
+    fs.readFile(__dirname+'/hw.json', (err, file) => {
+      if (err) console.log(err);
+      else {
+        file = '{"subject": {"doTime":"doTime" , "forTime":"forTime"}}';
+        fs.writeFile(__dirname+'/hw.json', file, (err) => {
+          if (err) return console.log(err);
+        });
+      }
+    })
+  }
 });
 
 

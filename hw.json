@@ -1,6 +1,6 @@
 {
-    "Franz-L": {
-        "doTime":"lol",
-        "forTime":"Donnersta"
+    "subject": {
+        "doTime":"doTime",
+        "forTime":"forTime"
     }
 }
