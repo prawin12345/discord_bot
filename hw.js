@@ -23,7 +23,8 @@ function addHomework(msg, subject, forTime, doTime) {
         if (err) return console.log(err);
         var hw = JSON.parse(file);
         if (subject == null || forTime == null || doTime == null) return msg.reply("Unvollständige Eingabe");
-        if (hw[subject] === undefined) { console.log(subject, hw[subject]); return msg.reply("Fach existiert schon");}
+        s = hw[subject];
+        if (s === undefined) { console.log(subject, hw[subject]); return msg.reply("Fach existiert schon");}
         hw[subject] = {forTime: forTime, doTime: doTime}
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return console.log(err);
