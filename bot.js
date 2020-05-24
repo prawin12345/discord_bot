@@ -95,7 +95,7 @@ client.on('message', msg => {
     else {
       var command = msg.content.split(' ');
       var [,subject, forTime, doTime] = command;
-      hw.addHomework(msg, subject, forTime, doTiem);
+      hw.addHomework(msg, subject, forTime, doTime);
     }
   }
 
