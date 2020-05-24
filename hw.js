@@ -46,6 +46,20 @@ function showHomework(msg) {
     })
 }
 
+function removeHomework(msg, subject) {
+    fs = require('fs');
+    fs.readFile(`${__dirname}/hw.json`, (err, file) => {
+        if (err) return console.log(err);
+        if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
+        var hw = JSON.parse(file);
+        delete hw[subject];
+        fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
+            if (err) return console.log(err);
+        })
+        return;
+    })
+}
+
 exports.modifyHomework = modifyHomework;
 exports.addHomework = addHomework;
 exports.showHomework = showHomework;
