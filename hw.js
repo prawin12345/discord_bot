@@ -12,7 +12,7 @@ function modifyHomework(msg, subject, input, type) {
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return console.log(err);
         });
-        msg.reply("test");
+        showHomework(msg);
         return;
     })
 }
@@ -24,12 +24,12 @@ function addHomework(msg, subject, forTime, doTime) {
         var hw = JSON.parse(file);
         if (subject == null || forTime == null || doTime == null) return msg.reply("Unvollständige Eingabe");
         s = hw[subject];
-        if (typeof s === "undefined") { console.log(typeof s); return msg.reply("Fach existiert schon");}
+        if (typeof s !== "undefined") { console.log(typeof s); return msg.reply("Fach existiert schon");}
         hw[subject] = {forTime: forTime, doTime: doTime}
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return console.log(err);
         })
-        msg.reply("test");
+        showHomework(msg);
         return;
     })
 }
@@ -42,7 +42,6 @@ function showHomework(msg) {
         for (let subject in hw) {
             msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
         }
-        msg.reply("test");
         return;
     })
 }
