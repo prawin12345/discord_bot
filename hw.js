@@ -63,3 +63,4 @@ function removeHomework(msg, subject) {
 exports.modifyHomework = modifyHomework;
 exports.addHomework = addHomework;
 exports.showHomework = showHomework;
+exports.removeHomework = removeHomework;

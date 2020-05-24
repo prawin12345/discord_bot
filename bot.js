@@ -99,6 +99,15 @@ client.on('message', msg => {
     }
   }
 
+  else if (msg.content.startsWith('=hw_rm')) {
+    if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
+    else {
+      var command = msg.content.split(' ');
+      var [,subject] = command;
+      hw.removeHomework(msg, subject);
+    }
+  }
+
   else if (msg.content === '=hw_list') {
     hw.showHomework(msg);
   }
