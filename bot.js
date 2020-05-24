@@ -83,11 +83,19 @@ client.on('message', msg => {
       var command = msg.content.split(' ');
       var [,subject,input,type] = command;
       //try {
-        var out = hw.modifyHomework(msg, subject,input,type);
-        client.channels.cache.get(msg.channel.id).send(out);
+        hw.modifyHomework(msg, subject,input,type);
       /*} catch (error) {
         client.channels.cache.get(msg.channel.id).send(error);
       }*/
+    }
+  }
+
+  else if (msg.content.startsWith('=hw_add')) {
+    if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
+    else {
+      var command = msg.content.split(' ');
+      var [,subject, forTime, doTime] = command;
+      hw.addHomework(msg, subject, forTime, doTiem);
     }
   }
 
