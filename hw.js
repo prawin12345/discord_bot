@@ -73,7 +73,7 @@ function sendData(hw) {
     }); 
     client.connect();
 
-    queryStr = `INSERT INTO "Json" ("name","data") values ('hw','${hw}');`;
+    queryStr = `UPDATE "Json" SET "data" = '${hw}' WHERE "name" = 'hw';`;
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
         if (res) console.log(res);
