@@ -1,33 +1,33 @@
 
 function modifyHomework(msg, subject, input, type) {
-    hw = getData();
-    var hw = JSON.parse(hw);
-    if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
-    else if (input == null) return msg.reply("Unvollständige Eingabe");
-    type = type || "doTime";
-    if (type !== "doTime" && type !== "forTime") return msg.reply("Ungültige Eingabe für Datentyp");
-    hw[subject][type] = input;
-    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
-        if (err) return console.log(err);
+    getData((hw) => {
+        hw = JSON.parse(hw);
+        if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
+        else if (input == null) return msg.reply("Unvollständige Eingabe");
+        type = type || "doTime";
+        if (type !== "doTime" && type !== "forTime") return msg.reply("Ungültige Eingabe für Datentyp");
+        hw[subject][type] = input;
+        fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
+            if (err) return console.log(err);
+        });
+        sendData(JSON.stringify(hw));
+        showHomework(msg);
     });
-    sendData(JSON.stringify(hw));
-    showHomework(msg);
-    return;
 }
 
 function addHomework(msg, subject, forTime, doTime) {
-    hw = getData();
-    var hw = JSON.parse(hw);
-    if (subject == null || forTime == null || doTime == null) return msg.reply("Unvollständige Eingabe");
-    s = hw[subject];
-    if (typeof s !== "undefined") { console.log(typeof s); return msg.reply("Fach existiert schon");}
-    hw[subject] = {forTime: forTime, doTime: doTime}
-    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
-        if (err) return console.log(err);
+    getData((hw) => {
+        hw = JSON.parse(hw);
+        if (subject == null || forTime == null || doTime == null) return msg.reply("Unvollständige Eingabe");
+        s = hw[subject];
+        if (typeof s !== "undefined") { console.log(typeof s); return msg.reply("Fach existiert schon");}
+        hw[subject] = {forTime: forTime, doTime: doTime}
+        fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
+            if (err) return console.log(err);
+        });
+        sendData(JSON.stringify(hw));
+        showHomework(msg);
     });
-    sendData(JSON.stringify(hw));
-    showHomework(msg);
-    return;
 }
 
 function showHomework(msg) {
@@ -42,16 +42,16 @@ function showHomework(msg) {
 }
 
 function removeHomework(msg, subject) {
-    hw = getData();
-    var hw = JSON.parse(hw);
-    if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
-    var hw = JSON.parse(file);
-    delete hw[subject];
-    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
-        if (err) return console.log(err);
+    getData((hw) => {
+        hw = JSON.parse(hw);
+        if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
+        var hw = JSON.parse(file);
+        delete hw[subject];
+        fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
+            if (err) return console.log(err);
+        });
+        sendData(JSON.stringify(hw));
     });
-    sendData(JSON.stringify(hw));
-    return;
 }
 
 function sendData(hw) {
