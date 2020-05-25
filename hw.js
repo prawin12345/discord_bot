@@ -86,10 +86,10 @@ function getData() {
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
         if (res) {
-            hw = res.rows[0].data;
-            return console.log(res.rows[0].data); /*return res.rows[0].data;*/
+            hw = res.rows[0].data; /*return res.rows[0].data;*/
         }
     });
+    console.log(hw);
     return hw;
 }
 
