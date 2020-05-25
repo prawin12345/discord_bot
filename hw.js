@@ -32,7 +32,7 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     hw = getData();
-    var hw = JSON.parse(hw);
+    //var hw = JSON.parse(hw);
     for (let subject in hw) {
         msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
     }
@@ -41,7 +41,7 @@ function showHomework(msg) {
 
 function removeHomework(msg, subject) {
     hw = getData();
-    //var hw = JSON.parse(hw);
+    var hw = JSON.parse(hw);
     if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
     var hw = JSON.parse(file);
     delete hw[subject];
