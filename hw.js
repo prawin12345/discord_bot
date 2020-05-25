@@ -31,14 +31,14 @@ function addHomework(msg, subject, forTime, doTime) {
 }
 
 function showHomework(msg) {
-    hw = getData();
-    console.log(hw);
-    //var hw = JSON.parse(hw);
-    //console.log(hw);
-    /*for (let subject in hw) {
-        msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
-    }*/
-    return;
+    getData((hw) => {
+        console.log(hw);
+        var hw = JSON.parse(hw);
+        console.log(hw);
+        for (let subject in hw) {
+            msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
+        }
+    });
 }
 
 function removeHomework(msg, subject) {
@@ -67,11 +67,13 @@ function sendData(hw) {
     queryStr = `UPDATE "Json" SET "data" = '${hw}' WHERE "name" = 'hw';`;
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
-        if (res) console.log(JSON.parse(res.rows[0].data));
+        if (res) {
+            console.log(JSON.parse(res.rows[0].data));
+        }
     });
 }
 
-function getData() {
+function getData(func) {
     const { Client } = require('pg');
     const client = new Client({
         connectionString: process.env.HEROKU_POSTGRESQL_BLACK_URL,
@@ -87,6 +89,7 @@ function getData() {
         if (err) console.log(err);
         if (res) {
             hw = res.rows[0].data; /*return res.rows[0].data;*/
+            func(hw);
         }
     });
     console.log(hw);
