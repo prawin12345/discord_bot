@@ -32,9 +32,9 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     hw = getData();
-    /*var hw = JSON.parse(hw);
+    var hw = JSON.parse(hw);
     console.log(hw);
-    for (let subject in hw) {
+    /*for (let subject in hw) {
         msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
     }*/
     return;
@@ -83,7 +83,7 @@ function getData() {
     queryStr = `SELECT "data" FROM "Json" WHERE "name" = 'hw';`;
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
-        if (res) {console.log(res.rows[0].data.data); return res.rows[0].data.data; /*return res.rows[0].data;*/}
+        if (res) {console.log(res.rows[0].data); return res.rows[0].data; /*return res.rows[0].data;*/}
     });
 }
 
