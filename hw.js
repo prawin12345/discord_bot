@@ -12,6 +12,7 @@ function modifyHomework(msg, subject, input, type) {
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return console.log(err);
         });
+        sendData(JSON.stringify(hw, null, '\t'));
         showHomework(msg);
         return;
     })
@@ -28,7 +29,8 @@ function addHomework(msg, subject, forTime, doTime) {
         hw[subject] = {forTime: forTime, doTime: doTime}
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return console.log(err);
-        })
+        });
+        sendData(JSON.stringify(hw, null, '\t'));
         showHomework(msg);
         return;
     })
@@ -55,9 +57,27 @@ function removeHomework(msg, subject) {
         delete hw[subject];
         fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
             if (err) return console.log(err);
-        })
+        });
+        sendData(JSON.stringify(hw, null, '\t'));
         return;
     })
+}
+
+function sendData(hw) {
+    const { Client } = require('pg');
+    const client = new Client({
+        connectionString: process.env.HEROKU_POSTGRESQL_BLACK_URL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+    }); 
+    client.connect();
+
+    queryStr = `INSERT INTO "Json" ("name","data") values ('hw','${hw}');`;
+    client.query(queryStr, (err, res) => {
+        if (err) console.log(err);
+        if (res) console.log(res);
+    });
 }
 
 exports.modifyHomework = modifyHomework;

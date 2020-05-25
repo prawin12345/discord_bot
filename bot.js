@@ -153,7 +153,7 @@ client.on('message', msg => {
     });
   }
 
-  else if (msg.content === '=dev reset hw') {
+  else if (msg.content === '=dev reset hw.json') {
     fs.readFile(__dirname+'/hw.json', (err, file) => {
       if (err) console.log(err);
       else {
@@ -198,4 +198,4 @@ app.get('/', function(req, res) {
 app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
-client.login('Njg4MDU5NTc2NzgzNzMyODM3.Xmu7sA.ig2LSYmh0GqfJu0_tt3ZZ2-Xcc4');
+client.login(process.env.BOT_TOKEN);
