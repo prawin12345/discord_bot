@@ -82,7 +82,7 @@ function getData() {
     queryStr = `SELECT "data" FROM "Json" WHERE "name" = 'hw';`;
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
-        if (res) return res.rows[1].data;
+        if (res) console.log(res.rows[1].data); return res.rows[1].data;
     });
 }
 
