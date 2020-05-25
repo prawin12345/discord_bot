@@ -80,6 +80,23 @@ function sendData(hw) {
     });
 }
 
+function getData() {
+    const { Client } = require('pg');
+    const client = new Client({
+        connectionString: process.env.HEROKU_POSTGRESQL_BLACK_URL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+    }); 
+    client.connect();
+
+    queryStr = `SELECT "data" FROM "Json" WHERE "name" = 'hw';`;
+    client.query(queryStr, (err, res) => {
+        if (err) console.log(err);
+        if (res) console.log(res);
+    });
+}
+
 exports.modifyHomework = modifyHomework;
 exports.addHomework = addHomework;
 exports.showHomework = showHomework;
