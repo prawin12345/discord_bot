@@ -59,7 +59,7 @@ function sendData(hw) {
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
         if (res) {
-            console.log(JSON.parse(res.rows[0].data));
+            console.log(res);
         }
     });
 }
