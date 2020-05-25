@@ -32,7 +32,6 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     hw = getData();
-    console.log(hw);
     var hw = JSON.parse(hw);
     console.log(hw);
     for (let subject in hw) {
@@ -84,7 +83,7 @@ function getData() {
     queryStr = `SELECT "data" FROM "Json" WHERE "name" = 'hw';`;
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
-        if (res) {console.log(res); return res.rows[0].data;}
+        if (res) {console.log(res.rows[0]); /*return res.rows[0].data;*/}
     });
 }
 
