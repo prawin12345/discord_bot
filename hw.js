@@ -7,10 +7,10 @@ function modifyHomework(msg, subject, input, type) {
     type = type || "doTime";
     if (type !== "doTime" && type !== "forTime") return msg.reply("Ungültige Eingabe für Datentyp");
     hw[subject][type] = input;
-    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
+    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
         if (err) return console.log(err);
     });
-    sendData(JSON.stringify(hw, null, '\t'));
+    sendData(JSON.stringify(hw));
     showHomework(msg);
     return;
 }
@@ -22,17 +22,18 @@ function addHomework(msg, subject, forTime, doTime) {
     s = hw[subject];
     if (typeof s !== "undefined") { console.log(typeof s); return msg.reply("Fach existiert schon");}
     hw[subject] = {forTime: forTime, doTime: doTime}
-    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
+    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
         if (err) return console.log(err);
     });
-    sendData(JSON.stringify(hw, null, '\t'));
+    sendData(JSON.stringify(hw));
     showHomework(msg);
     return;
 }
 
 function showHomework(msg) {
     hw = getData();
-    //var hw = JSON.parse(hw);
+    var hw = JSON.parse(hw);
+    console.log(hw);
     for (let subject in hw) {
         msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
     }
@@ -45,10 +46,10 @@ function removeHomework(msg, subject) {
     if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
     var hw = JSON.parse(file);
     delete hw[subject];
-    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw, null, '\t'), (err) => {
+    fs.writeFile(__dirname+'/hw.json', JSON.stringify(hw), (err) => {
         if (err) return console.log(err);
     });
-    sendData(JSON.stringify(hw, null, '\t'));
+    sendData(JSON.stringify(hw));
     return;
 }
 
