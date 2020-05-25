@@ -41,7 +41,7 @@ function showHomework(msg) {
 
 function removeHomework(msg, subject) {
     hw = getData();
-    var hw = JSON.parse(hw);
+    //var hw = JSON.parse(hw);
     if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
     var hw = JSON.parse(file);
     delete hw[subject];
