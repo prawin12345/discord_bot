@@ -66,7 +66,7 @@ function sendData(hw) {
     queryStr = `UPDATE "Json" SET "data" = '${hw}' WHERE "name" = 'hw';`;
     client.query(queryStr, (err, res) => {
         if (err) console.log(err);
-        if (res) console.log(res.rows[0]);
+        if (res) console.log(JSON.parse(res.rows[0].data));
     });
 }
 
