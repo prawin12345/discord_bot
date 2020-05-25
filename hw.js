@@ -32,6 +32,7 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     hw = getData();
+    console.log(hw);
     var hw = JSON.parse(hw);
     console.log(hw);
     for (let subject in hw) {
