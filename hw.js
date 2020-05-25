@@ -32,8 +32,9 @@ function addHomework(msg, subject, forTime, doTime) {
 
 function showHomework(msg) {
     hw = getData();
-    var hw = JSON.parse(hw);
     console.log(hw);
+    //var hw = JSON.parse(hw);
+    //console.log(hw);
     /*for (let subject in hw) {
         msg.reply(`${subject} auf ${hw[subject]["forTime"]} am ${hw[subject]["doTime"]}`);
     }*/
