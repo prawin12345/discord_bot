@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var constants = require(`${__dirname}/constants.js`);
 var hw = require(`${__dirname}/hw.js`);
-var fs = require('fs');
 //const db = require('./database.js');
 
 const client = new Discord.Client();
@@ -145,25 +144,6 @@ client.on('message', msg => {
     }
   }
 
-  else if (msg.content === '=dev hw.json') {
-    fs.readFile(`${__dirname}/hw.json`, (err,file) => {
-      if (err) msg.reply(err);
-      else msg.reply(JSON.stringify(JSON.parse(file)));
-      console.log(JSON.stringify(JSON.parse(file)));
-    });
-  }
-
-  else if (msg.content === '=dev reset hw.json') {
-    fs.readFile(__dirname+'/hw.json', (err, file) => {
-      if (err) console.log(err);
-      else {
-        file = '{"subject": {"doTime":"doTime" , "forTime":"forTime"}}';
-        fs.writeFile(__dirname+'/hw.json', file, (err) => {
-          if (err) return console.log(err);
-        });
-      }
-    })
-  }
 });
 
 
