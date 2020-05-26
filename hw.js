@@ -39,7 +39,6 @@ function removeHomework(msg, subject) {
     getData((hw) => {
         hw = JSON.parse(hw);
         if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
-        var hw = JSON.parse(file);
         delete hw[subject];
         sendData(JSON.stringify(hw));
     });
