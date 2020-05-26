@@ -7,8 +7,7 @@ function modifyHomework(msg, subject, input, type) {
         type = type || "doTime";
         if (type !== "doTime" && type !== "forTime") return msg.reply("Ungültige Eingabe für Datentyp");
         hw[subject][type] = input;
-        sendData(JSON.stringify(hw));
-        showHomework(msg);
+        sendData(JSON.stringify(hw), msg);
     });
 }
 
@@ -19,8 +18,7 @@ function addHomework(msg, subject, forTime, doTime) {
         s = hw[subject];
         if (typeof s !== "undefined") { console.log(typeof s); return msg.reply("Fach existiert schon");}
         hw[subject] = {forTime: forTime, doTime: doTime}
-        sendData(JSON.stringify(hw));
-        showHomework(msg);
+        sendData(JSON.stringify(hw), msg);
     });
 }
 
@@ -40,11 +38,10 @@ function removeHomework(msg, subject) {
         hw = JSON.parse(hw);
         if (hw[subject] == null) return msg.reply("Hausaufgabe mit diesem Fach nicht gefunden.");
         delete hw[subject];
-        sendData(JSON.stringify(hw));
     });
 }
 
-function sendData(hw) {
+function sendData(hw, msg) {
     const { Client } = require('pg');
     const client = new Client({
         connectionString: process.env.HEROKU_POSTGRESQL_BLACK_URL,
@@ -59,6 +56,7 @@ function sendData(hw) {
         if (err) console.log(err);
         if (res) {
             console.log(res);
+            showHomework(msg);
         }
     });
 }
