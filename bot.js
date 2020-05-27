@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var constants = require(`${__dirname}/constants.js`);
 var hw = require(`${__dirname}/hw.js`);
-//const db = require('./database.js');
 
 const client = new Discord.Client();
 const PORT = process.env.PORT;
@@ -81,11 +80,7 @@ client.on('message', msg => {
     else {
       var command = msg.content.split(' ');
       var [,subject,input,type] = command;
-      //try {
         hw.modifyHomework(msg, subject,input,type);
-      /*} catch (error) {
-        client.channels.cache.get(msg.channel.id).send(error);
-      }*/
     }
   }
 
