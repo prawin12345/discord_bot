@@ -13,13 +13,14 @@ const client = new CommandoClient({
 const PORT = process.env.PORT;
 const CHANNEL_ID = constants.CHANNEL_ID;
 
+//Command-Gruppen registrieren (bessere Alternative als lange If/Else Ketten)
 client.registry
   .registerGroups([
     ["test", "test command"]
   ])
   .registerCommandsIn(path.join(__dirname, 'commands'))
 
-//Bot einloggen
+//Aktion sobald Bot online ist
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -34,7 +35,8 @@ client.on('message', msg => {
 
   //Ping-Test
   else if (msg.content === '=test') {
-    client.channels.cache.get(msg.channel.id).send("test ok \n");
+    const StatusCommand = require(`${__dirname}/commands/test/status.js`).StatusCommand;
+    StatusCommand.run();
   }
 
   //alle muten
@@ -95,6 +97,7 @@ client.on('message', msg => {
     }
   }
 
+  //Homework hinzufügen
   else if (msg.content.startsWith('=hw_add')) {
     if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
     else {
@@ -104,6 +107,7 @@ client.on('message', msg => {
     }
   }
 
+  //Homework entfernen
   else if (msg.content.startsWith('=hw_rm')) {
     if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
     else {
@@ -117,7 +121,7 @@ client.on('message', msg => {
     hw.showHomework(msg);
   }
 
-  //play sound
+  //"Was" abspielen
   else if (msg.content === '=w') {
     if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
     else {
@@ -129,6 +133,7 @@ client.on('message', msg => {
     }
   }
 
+  //"Bruh" abspielen
   else if (msg.content === '=b') {
     if (msg.author.username !== 'Prawin1234') {msg.reply('Wie wagst du es nur, diesen Befehl auszuführen?'); msg.react('😡');}
     else {
