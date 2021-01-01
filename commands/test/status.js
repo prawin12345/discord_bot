@@ -9,5 +9,9 @@ module.exports = class StatusCommand extends Command {
 			memberName: 'status',
 			description: 'Test if the Bot works and is online.',
 		});
+    }
+    
+    run(message) {
+		return message.say('status ok');
 	}
 };
