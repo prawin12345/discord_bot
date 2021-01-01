@@ -1,10 +1,15 @@
-const Discord = require('discord.js');
+const { CommandoClient } = require('discord.js-commando');
+const path = require('path');
 var express = require('express');
 var app = express();
 var constants = require(`${__dirname}/constants.js`);
 var hw = require(`${__dirname}/hw.js`);
 
-const client = new Discord.Client();
+// const client = new Discord.Client();
+const client = new CommandoClient({
+	commandPrefix: '=',
+	owner: '643544677202526210',
+});
 const PORT = process.env.PORT;
 const CHANNEL_ID = constants.CHANNEL_ID;
 
