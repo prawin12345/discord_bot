@@ -35,8 +35,9 @@ client.on('message', msg => {
 
   //Ping-Test
   else if (msg.content === '=test') {
-    const StatusCommand = require(`${__dirname}/commands/test/status.js`).StatusCommand;
-    StatusCommand.run();
+    const StatusCommand = require(`${__dirname}/commands/test/status.js`);
+    let statusCommand = new StatusCommand(client);
+    statusCommand.run();
   }
 
   //alle muten
