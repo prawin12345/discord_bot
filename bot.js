@@ -20,6 +20,24 @@ client.registry
   ])
   .registerCommandsIn(path.join(__dirname, 'commands'))
 
+//Slash-Befehl registrieren
+client.api.applications(client.user.id).guilds('687937985852866598').commands.post({data: {
+  name: 'test',
+  description: 'Teste, ob der Bot online ist und funktioniert'
+}})
+
+//auf Slashbefehl warten
+client.ws.on('INTERACTION_CREATE', async interaction => {
+
+  //auf "test" reagieren
+  client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+    type: 4,
+    data: { content: 'test ok' }
+    }
+  })
+
+})
+
 //Aktion sobald Bot online ist
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
