@@ -37,7 +37,7 @@ client.on('message', msg => {
   else if (msg.content === '=test') {
     const StatusCommand = require(`${__dirname}/commands/test/status.js`);
     let statusCommand = new StatusCommand(client);
-    statusCommand.run();
+    statusCommand.run(msg);
   }
 
   //alle muten
