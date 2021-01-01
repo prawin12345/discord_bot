@@ -13,6 +13,12 @@ const client = new CommandoClient({
 const PORT = process.env.PORT;
 const CHANNEL_ID = constants.CHANNEL_ID;
 
+client.registry
+  .registerGroups([
+    ["test", "test command"]
+  ])
+  .registerCommandsIn(path.join(__dirname, 'commands'))
+
 //Bot einloggen
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
