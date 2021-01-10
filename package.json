@@ -1,0 +1,19 @@
+{
+  "name": "prawinbot",
+  "version": "1.1.0",
+  "description": "The Bot of Prawin1234s DiscordServer",
+  "main": "bot.js",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.5.1",
+    "discord.js-commando": "github:discordjs/Commando",
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prawin Rajasena",
+  "license": "ISC"
+}
