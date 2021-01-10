@@ -61,7 +61,8 @@ exports.LESSONS = {
                 "The English lesson hat started, like the message.",
                 "!clear-all-infractions"]
 }
-exports.CHANNEL_ID = '687937985852866603';
+exports.CHANNEL_ID =  '687937985852866603';
+exports.GUILD_ID =    '687937985852866598';
 
 exports.confirmation = "module erfolgreich geladen";
 

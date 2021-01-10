@@ -21,7 +21,7 @@ const CHANNEL_ID = constants.CHANNEL_ID;
   ])
   .registerCommandsIn(path.join(__dirname, 'commands')) */
 
-//auf Slashbefehl warten
+//auf Slashbefehl antworten
 client.ws.on('INTERACTION_CREATE', async interaction => {
 
   //auf "test" reagieren
@@ -38,11 +38,11 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   //Slash-Befehl registrieren
-  client.api.applications(client.user.id).guilds('687937985852866598').commands.post({data: {
+  client.api.applications(client.user.id).guilds(constants.GUILD_ID).commands.post({data: {
     name: 'test',
     description: 'Teste, ob der Bot online ist und funktioniert'
   }})
-  
+
 });
 
 //Aktionen beim Versender einer Nachricht
